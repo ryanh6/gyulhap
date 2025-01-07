@@ -23,7 +23,7 @@ class GyulHap {
         void createBoard();
         void printBoard();
         void findSolutions();
-    
+
     public:
         GyulHap();
         vector<vector<string>> getBoard();
@@ -57,7 +57,7 @@ GyulHap::GyulHap() {
 }
 
 void GyulHap::createBoard() {
-    
+
 }
 
 void GyulHap::printBoard() {
@@ -76,7 +76,7 @@ void GyulHap::findSolutions() {
 }
 
 // vector<vector<string>> GyulHap::getBoard() {
-//     return b;
+//     return;
 // }
 
 // vector<string> GyulHap::getSolutions() {
