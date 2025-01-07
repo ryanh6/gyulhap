@@ -3,23 +3,19 @@
 using namespace std;
 
 class Player {
-    // id / index / name?
-    // Points
     private:
         int id;
         int points;
+
     public:
-        Player();
+        Player(int number);
+        int getID();
+        void setID(int newID);
+        int getPoints();
+        void setPoints(int newPoints);
 };
 
 class GyulHap {
-    //Private
-        //Board
-        //Array of Solutions
-
-        //Print Board
-        //Make Board
-        //Find Solutions
     private:
         vector<vector<string>> board;
         vector<string> solutions;
@@ -28,35 +24,64 @@ class GyulHap {
         void printBoard();
         void findSolutions();
     
-    //Public
-        // Initialize Board?
-            // - Make board
-            // - find solutions
-        // Play Game
-            // - Print board at beginning
-            // - Alternate turns
-            // - Players guess a solution
-            // - gives points accordingly
     public:
-        GyulHap(); //Make Board, Make Array of solutions (Call Functions)
+        GyulHap();
+        vector<vector<string>> getBoard();
+        vector<string> getSolutions();
         void playGame();
 };
 
-void GyulHap::createBoard() {
+Player::Player(int number) {
+    id = number;
+    points = 0;
+}
+
+int Player::getID() {
+    return this->id;
+}
+
+void Player::setID(int newID) {
+    this->id = newID;
+}
+
+int Player::getPoints() {
+    return this->points;
+}
+
+void Player::setPoints(int newPoints) {
+    this->points = newPoints;
+}
+
+GyulHap::GyulHap() {
 
 }
 
-void GyulHap::printBoard() {
+void GyulHap::createBoard() {
+    
+}
 
+void GyulHap::printBoard() {
+    // cout << endl;
+    //     for (const auto &row : board) {
+    //         for (const auto &cell : row) {
+    //             cout << cell << " ";
+    //         }
+    //         cout << endl;
+    //     }
+    // cout << endl;
 }
 
 void GyulHap::findSolutions() {
 
 }
 
-GyulHap::GyulHap() {
+// vector<vector<string>> GyulHap::getBoard() {
+//     return b;
+// }
 
-}
+// vector<string> GyulHap::getSolutions() {
+//     return;
+// }
 
 void GyulHap::playGame() {
 
@@ -65,7 +90,10 @@ void GyulHap::playGame() {
 int main() {
     // Choose number of players and number of rounds
     // cout << "Hello World" << endl;
-    // Player player1;
-    GyulHap game1;
+    Player player1(6);
+
+    cout << player1.getID() << endl;
+    cout << player1.getPoints() << endl;
+    // GyulHap game1;
     return 0;
 }
