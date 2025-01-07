@@ -1,21 +1,71 @@
 #include <iostream>
+#include <vector>
+using namespace std;
 
-void printBoard(int gameBoard[][3], int size) {
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            std::cout << gameBoard[i][j] << std::endl;
-        }
-    }
+class Player {
+    // id / index / name?
+    // Points
+    private:
+        int id;
+        int points;
+    public:
+        Player();
+};
+
+class GyulHap {
+    //Private
+        //Board
+        //Array of Solutions
+
+        //Print Board
+        //Make Board
+        //Find Solutions
+    private:
+        vector<vector<string>> board;
+        vector<string> solutions;
+
+        void createBoard();
+        void printBoard();
+        void findSolutions();
+    
+    //Public
+        // Initialize Board?
+            // - Make board
+            // - find solutions
+        // Play Game
+            // - Print board at beginning
+            // - Alternate turns
+            // - Players guess a solution
+            // - gives points accordingly
+    public:
+        GyulHap(); //Make Board, Make Array of solutions (Call Functions)
+        void playGame();
+};
+
+void GyulHap::createBoard() {
+
+}
+
+void GyulHap::printBoard() {
+
+}
+
+void GyulHap::findSolutions() {
+
+}
+
+GyulHap::GyulHap() {
+
+}
+
+void GyulHap::playGame() {
+
 }
 
 int main() {
-    std::cout << "Hello World" << std::endl;
-
-    int gameBoard[3][3] = {{123,123,123},
-                           {123,123,123},
-                           {123,123,123}};
-    
-    printBoard(gameBoard, 3);
-
+    // Choose number of players and number of rounds
+    // cout << "Hello World" << endl;
+    // Player player1;
+    GyulHap game1;
     return 0;
 }
