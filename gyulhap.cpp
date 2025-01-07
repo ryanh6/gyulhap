@@ -53,47 +53,41 @@ void Player::setPoints(int newPoints) {
 }
 
 GyulHap::GyulHap() {
-
+    createBoard();
+    findSolutions();
 }
 
 void GyulHap::createBoard() {
-
+    board = {{"123", "213", "111"}, {"231", "322", "333"}, {"132", "221", "313"}};
 }
 
 void GyulHap::printBoard() {
-    // cout << endl;
-    //     for (const auto &row : board) {
-    //         for (const auto &cell : row) {
-    //             cout << cell << " ";
-    //         }
-    //         cout << endl;
-    //     }
-    // cout << endl;
+    for (int i = 0; i < board.size(); i++) {
+        for (int j = 0; j < board[i].size(); j++) {
+            cout << board[i][j] << " ";
+        }
+        cout << endl;
+    }
 }
 
 void GyulHap::findSolutions() {
 
 }
 
-// vector<vector<string>> GyulHap::getBoard() {
-//     return;
-// }
+vector<vector<string>> GyulHap::getBoard() {
+    return this->board;
+}
 
-// vector<string> GyulHap::getSolutions() {
-//     return;
-// }
+vector<string> GyulHap::getSolutions() {
+    return this->solutions;
+}
 
 void GyulHap::playGame() {
-
+    printBoard();
 }
 
 int main() {
-    // Choose number of players and number of rounds
-    // cout << "Hello World" << endl;
-    Player player1(6);
-
-    cout << player1.getID() << endl;
-    cout << player1.getPoints() << endl;
-    // GyulHap game1;
+    GyulHap gameBoard;
+    gameBoard.playGame();
     return 0;
 }
