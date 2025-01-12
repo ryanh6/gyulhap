@@ -4,49 +4,40 @@ using namespace std;
 
 class Card {
     private:
-        int shape;
-        int colour;
-        int background;
+        vector<int> attributes;
 
     public:
-        int getShape();
-        int getColour();
-        int getBackground();
-        bool isSet(Card otherCard);
-        Card(int shape, int colour, int background);
+        Card(vector<int> array);
+
+        vector<int> getAttributes();
+        Card findThirdCard(Card otherCard);
 };
 
-Card::Card(int shape, int colour, int background) {
-    this->shape = shape;
-    this->colour = colour;
-    this->background = background;
+Card::Card(vector<int> array) {
+    this->attributes = array;
 }
 
-bool Card::isSet(Card otherCard) {
-    cout << "This card is (" << getShape() << ", " << getColour() << ", " << getBackground() << ")" << endl;
-    cout << "Other card is (" << otherCard.getShape() << ", " << otherCard.getColour() << ", " << otherCard.getBackground() << ")" << endl;
-    return true;
+vector<int> Card::getAttributes() {
+    return this->attributes;
 }
 
-int Card::getShape() {
-    return this->shape;
-}
+Card Card::findThirdCard(Card otherCard) {
+    int value;
+    vector<int> newAttributes;
 
-int Card::getColour() {
-    return this->colour;
-}
+    for (int i = 0; i < this->attributes.size(); i++) {
+        value = ((this->getAttributes().at(i) * -1) + (otherCard.getAttributes().at(i) * -1) + 6) % 3;
+        newAttributes.push_back(value);
+    }
 
-int Card::getBackground() {
-    return this->background;
+    return Card(newAttributes);
 }
 
 int main() {
-    cout << "Hello World" << endl;
-    Card card1(1, 2, 3);
-    Card card2(3, 4, 5);
+    Card card1({0, 1, 1});
+    Card card2({2, 2, 2});
 
-    card1.isSet(card2);
-    card2.isSet(card1);
+    Card result = card1.findThirdCard(card2);
 
     return 0;
 }
