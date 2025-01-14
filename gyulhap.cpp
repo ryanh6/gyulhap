@@ -2,6 +2,17 @@
 #include <vector>
 using namespace std;
 
+class Board {
+    private:
+        vector<Card> cards;
+    public:
+        vector<Card> getCards();
+        vector<Card> generateCards();
+        vector<Card> displayCards();
+        vector<Card> drawCards();
+        Board();
+};
+
 class Card {
     private:
         vector<int> attributes;
