@@ -21,10 +21,10 @@ class Card {
 class Board {
     private:
         vector<Card> cards;
-        vector<string> solutions;
+        vector<vector<Card>> solutions;
     public:
         vector<Card> getCards();
-        vector<string> getSolutions();
+        vector<vector<Card>> getSolutions();
         void generateCards(int amount, int traits);
         void findSolutions();
         void displayCards(int length, int width);
@@ -34,14 +34,14 @@ class Board {
 
 Board::Board(int amount, int traits) {
     this->generateCards(amount, traits);
-    this->findSolutions();
+    // this->findSolutions();
 }
 
 vector<Card> Board::getCards() {
     return this->cards;
 }
 
-vector<string> Board::getSolutions() {
+vector<vector<Card>> Board::getSolutions() {
     return this->solutions;
 }
 
@@ -62,22 +62,34 @@ void Board::generateCards(int amount, int traits) {
 }
 
 void Board::findSolutions() {
+    vector<Card> set;
     vector<Card> visited;
-    vector<int> visitedIndex;
 
-    // for (int i = 0; i < this->getCards().size(); i++) {
-    //     for (int j = i; j < this->getCards().size(); j++) {
-    //         Card search = (this->getCards()).at(i).findThirdCard(this->getCards().at(j));
+    for (int i = 0; i < this->getCards().size(); i++) {
+        for (int j = i + 1; j < this->getCards().size(); j++) {
+            Card search = (this->getCards()).at(i).findThirdCard(this->getCards().at(j));
 
-    //         auto it = find(visited.begin(), visited.end(), search);
-    //         if (it != visited.end()) {
+            cout << "First Card: ";
+            (this->getCards()).at(i).printAttributes();
+            cout << endl;
 
-    //         }
-    //     }
+            cout << "Second Card: ";
+            (this->getCards()).at(j).printAttributes();
+            cout << endl;
 
-    //     // I have to define the push back function for Card vectors
-    //     // visited.push_back();
-    // }
+            cout << "Resulting Card: ";
+            search.printAttributes();
+            cout << endl;
+
+            // auto it = find(visited.begin(), visited.end(), search);
+            // if (it != visited.end()) {
+
+            // }
+        }
+
+        // I have to define the push back function for Card vectors
+        // visited.push_back();
+    }
 }
 
 void Board::displayCards(int length, int width) {
@@ -131,6 +143,7 @@ int main() {
 
     Board gameBoard(9, 3);
     gameBoard.displayCards(3, 3);
+    gameBoard.findSolutions();
 
     return 0;
 }
