@@ -6,6 +6,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+class Game {
+    private:
+        int rounds;
+        int players;
+    public:
+        int getRoundCount();
+        int getPlayerCount();
+        Game();
+};
+
 class Card {
     private:
         vector<int> attributes;
