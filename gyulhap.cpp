@@ -3,7 +3,6 @@
 #include <ctime>
 #include <vector>
 
-#include <bits/stdc++.h>
 using namespace std;
 
 class Game {
@@ -90,11 +89,6 @@ void Board::findSolutions() {
             cout << "Resulting Card: ";
             search.printAttributes();
             cout << endl;
-
-            // auto it = find(visited.begin(), visited.end(), search);
-            // if (it != visited.end()) {
-
-            // }
         }
 
         // I have to define the push back function for Card vectors
