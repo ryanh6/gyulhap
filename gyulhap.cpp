@@ -89,6 +89,9 @@ void Board::findSolutions() {
             cout << "Resulting Card: ";
             search.printAttributes();
             cout << endl;
+
+
+
         }
 
         // I have to define the push back function for Card vectors
@@ -145,9 +148,9 @@ int main() {
     // Card result = card1.findThirdCard(card2);
     // result.printAttributes();
 
-    Board gameBoard(9, 3);
-    gameBoard.displayCards(3, 3);
-    gameBoard.findSolutions();
+    // Board gameBoard(9, 3);
+    // gameBoard.displayCards(3, 3);
+    // gameBoard.findSolutions();
 
     return 0;
 }
