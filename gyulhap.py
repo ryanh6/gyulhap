@@ -8,7 +8,11 @@ class Player:
         return f'Player {self.id}: {self.name}'
 
 def main():
-    print("Hello World")
+    p1 = Player(1, "Alice")
+    p2 = Player(2, "Bob")
+
+    print(p1)
+    print(p2)
 
 if __name__=="__main__":
     main()
