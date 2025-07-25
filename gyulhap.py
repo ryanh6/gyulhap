@@ -82,14 +82,22 @@ class Board:
                 solutionCell = firstCell.thirdCell(secondCell)
 
                 if (solutionCell in checked):
-                    firstIndex = self.grid.index(firstCell)
-                    secondIndex = self.grid.index(secondCell)
-                    thirdIndex = self.grid.index(solutionCell)
+                    firstIndex = self.grid.index(firstCell) + 1
+                    secondIndex = self.grid.index(secondCell) + 1
+                    thirdIndex = self.grid.index(solutionCell) + 1
 
                     solutionIndex = tuple(sorted(list(tuple((firstIndex, secondIndex, thirdIndex)))))
                     self.solutions.append(solutionIndex)
 
             checked.append(firstCell)
+
+        print(self.solutions)
+
+    def verifySolution(self, solutionTuple):
+        if (solutionTuple in self.solutions):
+            self.solutions.remove(solutionTuple)
+            return True
+        return False
 
     def __str__(self):
         boardString = ""
@@ -102,13 +110,29 @@ class Board:
         return boardString[:-1]
 
 class Game:
-    def __init__(self, length, width, attributeNum):
-        self.board = Board(length, width, attributeNum)
+    def __init__(self, length, width, attributeNum, rounds):
+        self.rounds = rounds
+        self.boardLength = length
+        self.boardWidth = width
+        self.boardAttributeNum = attributeNum
         self.players = [Player(1, "Alice"), Player(2, "Bob")]
 
+    def makeNewBoard(self):
+        return Board(self.boardLength, self.boardWidth, self.boardAttributeNum)
+
+    def startGame(self):
+        for i in range(self.rounds):
+            print("Round " + str(i + 1))
+            self.board = self.makeNewBoard()
+            print(self.board.verifySolution((1, 2, 3)))
+            print(self.board.verifySolution((1, 2, 3)))
+            print(self.board)
+            print(self.players[0].name)
+
 def main():
-    newGame = Game(3, 3, 3)
-    print(newGame.board)
+    newGame = Game(3, 3, 3, 10)
+    # print(newGame.board)
+    newGame.startGame()
 
 if __name__=="__main__":
     main()
