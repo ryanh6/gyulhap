@@ -48,11 +48,13 @@ class Board:
         self.size = length * width
         self.attributeNum = attributeNum
         self.grid = []
+        self.solutions = []
 
         for i in range(self.size):
             self.grid.append(Cell((0,) * attributeNum))
 
         self.generateBoard()
+        self.findSolutions()
 
     def getCell(self, index):
         return self.grid[index]
@@ -68,6 +70,26 @@ class Board:
                 newCell = Cell(tuple(random.randint(0, 2) for i in range(self.attributeNum)))
                 
             self.setCell(i, newCell)
+
+    def findSolutions(self):
+        checked = []
+
+        for i in range(self.size):
+            firstCell = self.getCell(i)
+            for j in range(i + 1, self.size):
+                secondCell = self.getCell(j)
+
+                solutionCell = firstCell.thirdCell(secondCell)
+
+                if (solutionCell in checked):
+                    firstIndex = self.grid.index(firstCell)
+                    secondIndex = self.grid.index(secondCell)
+                    thirdIndex = self.grid.index(solutionCell)
+
+                    solutionIndex = tuple(sorted(list(tuple((firstIndex, secondIndex, thirdIndex)))))
+                    self.solutions.append(solutionIndex)
+
+            checked.append(firstCell)
 
     def __str__(self):
         boardString = ""
@@ -87,12 +109,6 @@ class Game:
 def main():
     newGame = Game(3, 3, 3)
     print(newGame.board)
-    cell1 = newGame.board.getCell(0)
-    cell2 = newGame.board.getCell(1)
-    print(cell1)
-    print(cell2)
-
-    print(cell1.thirdCell(cell2))
 
 if __name__=="__main__":
     main()
