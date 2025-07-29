@@ -1,5 +1,7 @@
 import random
 import math
+import time
+import pygame
 
 class Player:
     def __init__(self, id, name):
@@ -110,29 +112,44 @@ class Board:
         return boardString[:-1]
 
 class Game:
-    def __init__(self, length, width, attributeNum, rounds):
+    def __init__(self, rounds):
         self.rounds = rounds
-        self.boardLength = length
-        self.boardWidth = width
-        self.boardAttributeNum = attributeNum
-        self.players = [Player(1, "Alice"), Player(2, "Bob")]
-
-    def makeNewBoard(self):
-        return Board(self.boardLength, self.boardWidth, self.boardAttributeNum)
+    
+    def makeNewBoard(self, length, width, attributes):
+        return Board(length, width, attributes)
 
     def startGame(self):
         for i in range(self.rounds):
             print("Round " + str(i + 1))
-            self.board = self.makeNewBoard()
-            print(self.board.verifySolution((1, 2, 3)))
-            print(self.board.verifySolution((1, 2, 3)))
+            self.board = self.makeNewBoard(3, 3, 3)
+            # print(self.board.verifySolution((1, 2, 3)))
+            # print(self.board.verifySolution((1, 2, 3)))
             print(self.board)
-            print(self.players[0].name)
+            # print(self.players[0].name)
 
 def main():
-    newGame = Game(3, 3, 3, 10)
-    # print(newGame.board)
+    newGame = Game(10)
     newGame.startGame()
+
+    # pygame.init()
+
+    # screen = pygame.display.set_mode((400, 300))
+    # pygame.display.set_caption("Gyul Hap")
+
+    # running = True
+    # while running:
+    #     pygame.time.delay(100)
+
+    #     for event in pygame.event.get():
+    #         if (event.type == pygame.QUIT):
+    #             running = False
+
+    # pygame.quit()
 
 if __name__=="__main__":
     main()
+
+
+# NEED:
+#   Board.draw()
+#   Cell.draw() ???? (OVerload? different shapes and colours whatnot)
