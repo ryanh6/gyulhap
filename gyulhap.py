@@ -1,47 +1,35 @@
-from player import Player
-from board import Board
+import time
+import pygame
 
-class Game:
-    def __init__(self, rounds):
-        self.rounds = rounds
-    
-    def makeNewBoard(self, length, width, attributes):
-        return Board(length, width, attributes)
+class GyulHap:
+    def __init__(self):
+        pygame.init()
+        pygame.display.set_caption("Gyul Hap")
+        self.screen = pygame.display.set_mode((400, 300))
+        self.running = True
+        self.playing = True
+        self.stateStack = []
 
-    def startGame(self):
-        for i in range(self.rounds):
-            print("Round " + str(i + 1))
-            self.board = self.makeNewBoard(3, 3, 3)
-            # print(self.board.verifySolution((1, 2, 3)))
-            # print(self.board.verifySolution((1, 2, 3)))
-            print(self.board)
-            # print(self.players[0].name)
+    def gameLoop(self):
+        while (self.playing == True):
+            self.getEvents()
+            self.update()
+            self.render()
 
-def main():
-    newGame = Game(10)
-    newGame.startGame()
+    def getEvents(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.playing = False
+                self.running = False
 
-    # pygame.init()
+    def update(self):
+        pass
 
-    # screen = pygame.display.set_mode((400, 300))
-    # pygame.display.set_caption("Gyul Hap")
-
-    # running = True
-    # while running:
-    #     pygame.time.delay(100)
-
-    #     for event in pygame.event.get():
-    #         if (event.type == pygame.QUIT):
-    #             running = False
-
-    # pygame.quit()
+    def render(self):
+        pass
 
 if __name__=="__main__":
-    main()
-
-
-# NEED:
-#   Board.draw()
-#   Cell.draw() ???? (OVerload? different shapes and colours whatnot)
-
-# Following: https://www.youtube.com/watch?v=b_DkQrJxpck
+    gyulHapGame = GyulHap()
+    
+    while (gyulHapGame.running == True):
+        gyulHapGame.gameLoop()
