@@ -1,5 +1,6 @@
 import time
 import pygame
+from title import Title
 
 class GyulHap:
     def __init__(self):
@@ -9,6 +10,8 @@ class GyulHap:
         self.running = True
         self.playing = True
         self.stateStack = []
+
+        self.loadStates()
 
     def gameLoop(self):
         while (self.playing == True):
@@ -23,10 +26,15 @@ class GyulHap:
                 self.running = False
 
     def update(self):
-        pass
+        self.stateStack[-1].update()
 
     def render(self):
-        pass
+        self.stateStack[-1].render(self.screen)
+        pygame.display.flip()
+
+    def loadStates(self):
+        self.titleScreen = Title(self)
+        self.stateStack.append(self.titleScreen)
 
 if __name__=="__main__":
     gyulHapGame = GyulHap()

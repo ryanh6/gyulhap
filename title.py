@@ -1,6 +1,6 @@
 from state import State
 
-class Game(State):
+class Title(State):
     def __init__(self, game):
         State.__init__(self, game)
 
@@ -8,4 +8,4 @@ class Game(State):
         pass
 
     def render(self, display):
-        display.fill((0, 255, 0))
+        display.fill((255, 0, 0))
