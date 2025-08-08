@@ -7,7 +7,7 @@ class GyulHap:
     def __init__(self):
         pygame.init()
         pygame.display.set_caption("Gyul Hap")
-        self.screen = pygame.display.set_mode((400, 300))
+        self.screen = pygame.display.set_mode((1000, 500))
         self.running = True
         self.playing = True
         self.stateStack = []

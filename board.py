@@ -2,11 +2,13 @@ import random
 from cell import Cell
 
 class Board():
-    def __init__(self, length, width, attributeNum):
+    def __init__(self, length, width, attributeNum, colours, backgroundColours):
         self.length = length
         self.width = width
         self.size = length * width
         self.attributeNum = attributeNum
+        self.colours = colours
+        self.backgroundColours = backgroundColours
         self.grid = []
         self.solutions = []
 
@@ -58,6 +60,11 @@ class Board():
             self.solutions.remove(solutionTuple)
             return True
         return False
+
+    def draw(self, display):
+        for i in range(self.length):
+            for j in range(self.width):
+                self.grid[(i * self.width) + j].draw(display, j, i, self.colours, self.backgroundColours)
 
     def __str__(self):
         boardString = ""

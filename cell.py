@@ -1,4 +1,5 @@
 import math
+import pygame
 
 class Cell():
     def __init__(self, attributes):
@@ -24,6 +25,13 @@ class Cell():
 
         desiredCell = Cell(tuple(values))
         return desiredCell
+
+    def draw(self, display, x, y, colours, backgroundColours):
+        colour = colours[list(self.getAttributes())[0]]
+        background = backgroundColours[list(self.getAttributes())[1]]
+        
+        pygame.draw.rect(display, background, pygame.Rect(x * 100, y * 100, 100, 100))
+        pygame.draw.rect(display, colour, pygame.Rect((x * 100) + 25, (y * 100) + 25, 50, 50))
 
     def __str__(self):
         return f"{self.attributes}"
