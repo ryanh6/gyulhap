@@ -7,5 +7,5 @@ class Title(State):
     def update(self):
         pass
 
-    def render(self, display):
+    def draw(self, display):
         display.fill((255, 0, 0))

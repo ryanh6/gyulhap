@@ -1,6 +1,7 @@
 import time
 import pygame
 from title import Title
+from game import Game
 
 class GyulHap:
     def __init__(self):
@@ -17,7 +18,7 @@ class GyulHap:
         while (self.playing == True):
             self.getEvents()
             self.update()
-            self.render()
+            self.draw()
 
     def getEvents(self):
         for event in pygame.event.get():
@@ -28,12 +29,13 @@ class GyulHap:
     def update(self):
         self.stateStack[-1].update()
 
-    def render(self):
-        self.stateStack[-1].render(self.screen)
+    def draw(self):
+        self.stateStack[-1].draw(self.screen)
         pygame.display.flip()
 
     def loadStates(self):
-        self.titleScreen = Title(self)
+        self.titleScreen = Game(self)
+        # self.titleScreen = Title(self)
         self.stateStack.append(self.titleScreen)
 
 if __name__=="__main__":

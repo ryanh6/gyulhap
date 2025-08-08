@@ -7,5 +7,5 @@ class Game(State):
     def update(self):
         pass
 
-    def render(self, display):
+    def draw(self, display):
         display.fill((0, 255, 0))
