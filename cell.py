@@ -5,6 +5,19 @@ class Cell():
     def __init__(self, attributes):
         self.attributes = attributes
 
+        circleImg = pygame.image.load("circle.png").convert_alpha()
+        circleImg.set_colorkey((255, 255, 255))
+        squareImg = pygame.image.load("square.png").convert_alpha()
+        squareImg.set_colorkey((255, 255, 255))
+        triangleImg = pygame.image.load("triangle.png").convert_alpha()
+        triangleImg.set_colorkey((255, 255, 255))
+
+        self.circle = circleImg
+        self.square = squareImg
+        self.triangle = triangleImg
+
+        self.shapes = [self.circle, self.square, self.triangle]
+
     def __eq__(self, other):
         if (self.attributes == other.attributes):
             return True
@@ -26,21 +39,24 @@ class Cell():
         desiredCell = Cell(tuple(values))
         return desiredCell
 
-    def processImage(self, shape, colour):
-        pixelArray = pygame.PixelArray(shape)
-        pixelArray.replace((0, 0, 0), colour)
-        del pixelArray
-        return shape
-
-    def draw(self, display, x, y, colours, backgroundColours, shapes):
+    def draw(self, display, x, y, colours, backgroundColours):
         colour = colours[list(self.getAttributes())[0]]
         background = backgroundColours[list(self.getAttributes())[1]]
-        shape = shapes[list(self.getAttributes())[2]]
+        shape = self.shapes[list(self.getAttributes())[2]]
         
         pygame.draw.rect(display, background, pygame.Rect(x * 100, y * 100, 100, 100))
-        newShape = self.processImage(shape, colour)
 
-        display.blit(newShape, ((x * 100) + 25, (y * 100) + 25))
+        pixelArray1 = pygame.PixelArray(self.circle)
+        pixelArray1.replace((0, 0, 0), colour)
+        del pixelArray1
+        pixelArray2 = pygame.PixelArray(self.square)
+        pixelArray2.replace((0, 0, 0), colour)
+        del pixelArray2
+        pixelArray3 = pygame.PixelArray(self.triangle)
+        pixelArray3.replace((0, 0, 0), colour)
+        del pixelArray3
+
+        display.blit(shape, ((x * 100) + 25, (y * 100) + 25))
 
     def __str__(self):
         return f"{self.attributes}"
