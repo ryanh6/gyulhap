@@ -26,12 +26,21 @@ class Cell():
         desiredCell = Cell(tuple(values))
         return desiredCell
 
-    def draw(self, display, x, y, colours, backgroundColours):
+    def processImage(self, shape, colour):
+        pixelArray = pygame.PixelArray(shape)
+        pixelArray.replace((0, 0, 0), colour)
+        del pixelArray
+        return shape
+
+    def draw(self, display, x, y, colours, backgroundColours, shapes):
         colour = colours[list(self.getAttributes())[0]]
         background = backgroundColours[list(self.getAttributes())[1]]
+        shape = shapes[list(self.getAttributes())[2]]
         
         pygame.draw.rect(display, background, pygame.Rect(x * 100, y * 100, 100, 100))
-        pygame.draw.rect(display, colour, pygame.Rect((x * 100) + 25, (y * 100) + 25, 50, 50))
+        newShape = self.processImage(shape, colour)
+
+        display.blit(newShape, ((x * 100) + 25, (y * 100) + 25))
 
     def __str__(self):
         return f"{self.attributes}"
