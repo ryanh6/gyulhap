@@ -1,7 +1,7 @@
 import time
 import pygame
-from title import Title
-from game import Game
+from states.title import Title
+from states.game import Game
 
 class GyulHap:
     def __init__(self):
