@@ -1,9 +1,13 @@
 from states.state import State
 from states.game import Game
 
+import pygame
+
 class Title(State):
     def __init__(self, game):
         State.__init__(self, game)
+
+        self.gameScreen = Game(self.game)
 
         # Title should already have an instance of the game loaded (Like Line 16)
         #   if start game, then just enter game state
@@ -14,9 +18,11 @@ class Title(State):
             self.game.playing = False
             self.game.running = False
         if (controls["enter"] == True):
-            gameScreen = Game(self.game)
-            gameScreen.enterState()
+            self.gameScreen.start()
+            self.gameScreen.enterState()
+
         self.game.resetKeys()
 
     def draw(self, display):
         display.fill((255, 0, 0))
+        

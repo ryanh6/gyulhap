@@ -8,22 +8,21 @@ class Game(State):
         State.__init__(self, game)
 
         # Add default settings of the game
+        self.length = 3
+        self.width = 3
+        self.attributes = 3
 
         self.colours = [(255, 0, 0), (0, 0, 255), (255, 255, 0)]
         self.backgroundColours = [(255, 255, 255), (0, 0, 0), (100, 100, 100)]
 
-        self.start()
-
-    def makeNewBoard(self, length, width, attributes, colours, backgroundColours):
-        return Board(length, width, attributes, colours, backgroundColours)
-
     def start(self):
-        self.board = self.makeNewBoard(3, 3, 3, self.colours, self.backgroundColours)
+        self.board = Board(self.length, self.width, self.attributes, self.colours, self.backgroundColours)
         print(self.board)
 
     def update(self, controls):
         if (controls["escape"] == True):
             self.exitState()
+
         self.game.resetKeys()
         
 
