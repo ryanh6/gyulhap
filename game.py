@@ -19,7 +19,10 @@ class Game(State):
         print(self.board)
 
     def update(self, controls):
-        pass
+        if (controls["escape"] == True):
+            self.exitState()
+        self.game.resetKeys()
+        
 
     def draw(self, display):
         display.fill((255, 255, 255))

@@ -95,6 +95,10 @@ class GyulHap:
         self.titleScreen = Title(self)
         self.stateStack.append(self.titleScreen)
 
+    def resetKeys(self):
+        for actions in self.controls:
+            self.controls[actions] = False 
+
 if __name__=="__main__":
     gyulHapGame = GyulHap()
     
