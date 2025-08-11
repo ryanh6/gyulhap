@@ -3,7 +3,7 @@ class State():
         self.game = game
         self.previousState = None
 
-    def update(self):
+    def update(self, controls):
         pass
 
     def draw(self):

@@ -18,7 +18,7 @@ class Game(State):
         self.board = self.makeNewBoard(3, 3, 3, self.colours, self.backgroundColours)
         print(self.board)
 
-    def update(self):
+    def update(self, controls):
         pass
 
     def draw(self, display):
