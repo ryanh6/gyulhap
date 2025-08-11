@@ -6,6 +6,9 @@ import pygame
 class Game(State):
     def __init__(self, game):
         State.__init__(self, game)
+
+        # Add default settings of the game
+
         self.colours = [(255, 0, 0), (0, 0, 255), (255, 255, 0)]
         self.backgroundColours = [(255, 255, 255), (0, 0, 0), (100, 100, 100)]
 
