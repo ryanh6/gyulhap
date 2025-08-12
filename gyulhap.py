@@ -10,6 +10,7 @@ class GyulHap:
         self.screen = pygame.display.set_mode((1000, 500))
         self.running = True
         self.playing = True
+        self.position = (0, 0)
         self.controls = {"left": False,
                          "right": False,
                          "up": False,
@@ -29,6 +30,8 @@ class GyulHap:
             self.draw()
 
     def getEvents(self):
+        self.position = pygame.mouse.get_pos()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing = False
@@ -85,10 +88,10 @@ class GyulHap:
                     self.controls["right"] = False
 
     def update(self):
-        self.stateStack[-1].update(self.controls)
+        self.stateStack[-1].update(self.controls, self.position)
 
     def draw(self):
-        self.stateStack[-1].draw(self.screen)
+        self.stateStack[-1].draw(self.screen, self.position)
         pygame.display.flip()
 
     def loadStates(self):
