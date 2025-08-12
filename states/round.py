@@ -5,7 +5,10 @@ class Round(State):
         State.__init__(self, game)
 
     def update(self, controls, position):
-        pass
+        if (controls["escape"] == True):
+            self.exitState()
+
+        self.game.resetKeys()
 
     def draw(self, display, position):
-        display.fill((0, 0, 255))
+        display.fill((255, 0, 0))

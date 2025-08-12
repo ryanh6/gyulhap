@@ -1,4 +1,5 @@
 from states.state import State
+from states.round import Round
 from engine.board import Board
 
 import pygame
@@ -15,7 +16,28 @@ class Game(State):
         self.colours = [(255, 0, 0), (0, 0, 255), (255, 255, 0)]
         self.backgroundColours = [(255, 255, 255), (0, 0, 0), (100, 100, 100)]
 
-    def start(self):
+    def getLength(self):
+        return self.length
+    
+    def getWidth(self):
+        return self.width
+    
+    def getAttributes(self):
+        return self.attributes
+    
+    def setLength(self, newLength):
+        self.length = newLength
+
+    def setWidth(self, newWidth):
+        self.width = newWidth
+
+    def setAttributes(self, newAttributes):
+        self.attributes = newAttributes
+
+    def play(self):
+        roundScreen = Round(self.game)
+        roundScreen.enterState()
+
         self.board = Board(self.length, self.width, self.attributes, self.colours, self.backgroundColours)
         print(self.board)
 

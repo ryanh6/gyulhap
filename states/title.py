@@ -1,35 +1,45 @@
 from states.state import State
 from states.game import Game
+from states.menu import Menu
+from states.rules import Rules
 from engine.button import Button
-
-import pygame
 
 class Title(State):
     def __init__(self, game):
         State.__init__(self, game)
-
-        self.test = Button(300, 300, "./assets/triangle.png")
-
         self.gameScreen = Game(self.game)
 
-        # Title should already have an instance of the game loaded (Like Line 16)
-        #   if start game, then just enter game state
-        #   if change settings, send that game instance to the menu state
+        # self.playButton = Button()
+        # self.rulesButton = Button()
+        # self.settingsButton = Button()
+        # self.exitButton = Button()
 
     def update(self, controls, position):
         if (controls["escape"] == True):
             self.game.playing = False
             self.game.running = False
-        if (controls["enter"] == True):
-            self.gameScreen.start()
-            self.gameScreen.enterState()
+
         if (controls["clicked"] == True):
-            if (self.test.rect.collidepoint(position)):
-                print("SIDUBF")
+            # if (self.playButton.rect.collidepoint(position)):
+                self.gameScreen.enterState()
+                self.gameScreen.play()
+            # if (self.rulesButton.rect.collidepoint(position)):
+            #     rulesScreen = Rules(self.game)
+            #     rulesScreen.enterState()
+            # if (self.settingsButton.rect.collidepoint(position)):
+            #     menuScreen = Menu(self.game, self.gameScreen)
+            #     menuScreen.enterState()
+            # if (self.exitButton.rect.collidepoint(position)):
+            #     self.game.playing = False
+            #     self.game.running = False
 
         self.game.resetKeys()
 
     def draw(self, display, position):
-        display.fill((255, 0, 0))
-        self.test.draw(display, position)
+        display.fill((255, 255, 255))
+
+        # self.playButton.draw(display, position)
+        # self.rulesButton.draw(display, position)
+        # self.settingsButton.draw(display, position)
+        # self.exitButton.draw(display, position)
         
