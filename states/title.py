@@ -36,7 +36,7 @@ class Title(State):
         self.game.resetKeys()
 
     def draw(self, display, position):
-        display.fill((255, 255, 255))
+        display.fill((0, 255, 255))
 
         # self.playButton.draw(display, position)
         # self.rulesButton.draw(display, position)

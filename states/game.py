@@ -12,6 +12,8 @@ class Game(State):
         self.length = 3
         self.width = 3
         self.attributes = 3
+        self.rounds = 10
+        self.count = 0
 
         self.colours = [(255, 0, 0), (0, 0, 255), (255, 255, 0)]
         self.backgroundColours = [(255, 255, 255), (0, 0, 0), (100, 100, 100)]
@@ -35,7 +37,7 @@ class Game(State):
         self.attributes = newAttributes
 
     def play(self):
-        roundScreen = Round(self.game)
+        roundScreen = Round(self.game, 1)
         roundScreen.enterState()
 
         self.board = Board(self.length, self.width, self.attributes, self.colours, self.backgroundColours)
@@ -44,9 +46,14 @@ class Game(State):
     def update(self, controls, position):
         if (controls["escape"] == True):
             self.exitState()
+        if (controls["clicked"] == True):
+            if (self.count <= 10):
+                self.play()
+                self.count += 1
+            else:
+                self.exitState()
 
         self.game.resetKeys()
-        
 
     def draw(self, display, position):
         display.fill((255, 255, 255))
