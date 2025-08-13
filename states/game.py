@@ -51,6 +51,7 @@ class Game(State):
                 self.play()
                 self.count += 1
             else:
+                self.count = 0
                 self.exitState()
 
         self.game.resetKeys()

@@ -17,12 +17,12 @@ class Round(State):
         self.game.resetKeys()
 
     def draw(self, display, position):
-        display.fill((255, 0, 0))
+        display.fill((220, 30, 40))
 
         currentTime = pygame.time.get_ticks()
         print(currentTime)
         wideness = (currentTime - self.startTime) / 3000
         currentSize = display.get_width()
-        pygame.draw.rect(display, (205, 0, 0), pygame.Rect(0, display.get_height() - 10, currentSize * wideness, 10))
+        pygame.draw.rect(display, (170, 30, 40), pygame.Rect(0, display.get_height() - 10, currentSize * wideness, 10))
 
 
