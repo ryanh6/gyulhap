@@ -1,6 +1,8 @@
 import math
 import pygame
 
+from engine.button import Button
+
 class Cell():
     def __init__(self, attributes):
         self.attributes = attributes
@@ -15,6 +17,9 @@ class Cell():
         self.circle = circleImg
         self.square = squareImg
         self.triangle = triangleImg
+
+        self.cellButton = Button("./assets/blank.png")
+        self.cellButton.image.set_colorkey((255, 255, 255))
 
         self.shapes = [self.circle, self.square, self.triangle]
 
@@ -45,6 +50,7 @@ class Cell():
         shape = self.shapes[list(self.getAttributes())[2]]
         
         pygame.draw.rect(display, background, pygame.Rect(x * 100, y * 100, 100, 100))
+        self.cellButton.draw(display, x * 100, y * 100, (0, 0))
 
         pixelArray1 = pygame.PixelArray(self.circle)
         pixelArray1.replace((0, 0, 0), colour)
