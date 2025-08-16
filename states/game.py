@@ -14,6 +14,8 @@ class Game(State):
         self.attributes = 3
         self.rounds = 10
         self.count = 0
+        self.playerCount = 0
+        self.startTime = pygame.time.get_ticks()
 
         self.colours = [(255, 0, 0), (0, 0, 255), (255, 255, 0)]
         self.backgroundColours = [(255, 255, 255), (0, 0, 0), (100, 100, 100)]
@@ -44,8 +46,17 @@ class Game(State):
         print(self.board)
 
     def update(self, controls, position):
+        currentTime = pygame.time.get_ticks()
+
+        if (currentTime - self.startTime >= 10000):
+            print("PLayer " + str(self.playerCount) + "'s Turn")
+            self.playerCount += 1
+            self.startTime = pygame.time.get_ticks()
+
         if (controls["escape"] == True):
             self.exitState()
+        if (controls["up"] == True):
+            print("Player " + str(self.playerCount) + " performed action")
         if (controls["clicked"] == True):
             if (self.count <= 10):
                 self.play()
