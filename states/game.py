@@ -71,9 +71,18 @@ class Game(State):
             self.startTime = pygame.time.get_ticks()
 
         if (controls["escape"] == True):
+            # Pause Timer
+            # Pull up pause screen
             self.exitState()
         if (controls["clicked"] == True):
+            # Set player action to true
             print(self.playerList[self.playerCount].sayHi())
+
+        # If player action is True
+            # end Timer
+            # start new 5 second timer? (In player update?)
+            # enter player.update(), gives them cursor controls
+
         if (self.looped >= 3):
             if (self.count <= 10):
                 self.generateRound()
