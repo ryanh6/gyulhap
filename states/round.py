@@ -3,15 +3,18 @@ from states.state import State
 import pygame
 
 class Round(State):
-    def __init__(self, game, number):
+    def __init__(self, game, roundNumber):
         State.__init__(self, game)
-        self.number = number
+        self.roundNumber = roundNumber
         self.startTime = pygame.time.get_ticks()
 
-    def update(self, controls, position):
-        currentTime = pygame.time.get_ticks()
+    def timer(self, duration):
+        if (pygame.time.get_ticks() - self.startTime >= duration):
+            return True
+        return False
 
-        if (currentTime - self.startTime >= 3000):
+    def update(self, controls, position):
+        if (self.timer(3000)):
             self.exitState()
 
         self.game.resetKeys()

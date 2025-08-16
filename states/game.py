@@ -1,6 +1,7 @@
 from states.state import State
 from states.round import Round
 from engine.board import Board
+from engine.player import Player
 
 import pygame
 
@@ -14,7 +15,10 @@ class Game(State):
         self.attributes = 3
         self.rounds = 10
         self.count = 0
+
+        self.playerList = [Player(1, "Alice"), Player(2, "Bob")]
         self.playerCount = 0
+        self.looped = 0
         self.startTime = pygame.time.get_ticks()
 
         self.colours = [(255, 0, 0), (0, 0, 255), (255, 255, 0)]
@@ -39,27 +43,41 @@ class Game(State):
         self.attributes = newAttributes
 
     def play(self):
+        self.generateRound()
+
+    def generateRound(self):
         roundScreen = Round(self.game, 1)
         roundScreen.enterState()
 
+        self.looped = 0
+        self.playerCount = 0
         self.board = Board(self.length, self.width, self.attributes, self.colours, self.backgroundColours)
         print(self.board)
+        print(str(self.playerList[self.playerCount].getName()) + "'s Turn")
 
     def update(self, controls, position):
         currentTime = pygame.time.get_ticks()
 
         if (currentTime - self.startTime >= 10000):
-            print("PLayer " + str(self.playerCount) + "'s Turn")
             self.playerCount += 1
+
+            if (self.playerCount == len(self.playerList)):
+                self.playerCount = 0
+                self.looped += 1
+                print("looped")
+            
+            print(str(self.playerList[self.playerCount].getName()) + "'s Turn")
+
             self.startTime = pygame.time.get_ticks()
 
         if (controls["escape"] == True):
             self.exitState()
-        if (controls["up"] == True):
-            print("Player " + str(self.playerCount) + " performed action")
         if (controls["clicked"] == True):
+            print(self.playerList[self.playerCount].sayHi())
+        if (self.looped >= 3):
             if (self.count <= 10):
-                self.play()
+                self.generateRound()
+                self.startTime = pygame.time.get_ticks()
                 self.count += 1
             else:
                 self.count = 0
