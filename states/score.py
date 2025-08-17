@@ -2,7 +2,7 @@ from states.state import State
 
 import pygame
 
-class Round(State):
+class Score(State):
     def __init__(self, game, roundNumber):
         State.__init__(self, game)
         self.roundNumber = roundNumber
@@ -27,5 +27,3 @@ class Round(State):
         wideness = (currentTime - self.startTime) / 3000
         currentSize = display.get_width()
         pygame.draw.rect(display, (40, 30, 170), pygame.Rect(0, display.get_height() - 10, currentSize * wideness, 10))
-
-
