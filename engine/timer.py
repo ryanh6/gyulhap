@@ -2,27 +2,30 @@ import pygame
 
 class Timer():
     def __init__(self):
+        self.active = False
         self.startTime = 0
-        self.currentTime = 0
         self.duration = 0
 
-    def startTimer(self, milliseconds):
+    def startTimer(self, duration):
+        self.active = True
         self.startTime = pygame.time.get_ticks()
-        self.currentTime = self.startTime
-        self.duration = milliseconds
+        self.duration = duration * 1000
 
-    def checkTimer(self):
-        self.currentTime = pygame.time.get_ticks()
+    def endTimer(self):
+        self.active = False
+        self.startTime = 0
+        self.duration = 0
 
-        if (self.currentTime - self.startTime >= self.duration):
-            return True
-        return False
+    def update(self):
+        if (self.active):
+            currentTime = pygame.time.get_ticks()
 
-    # def endTimer(self):
-
+            if (currentTime - self.startTime >= self.duration):
+                self.endTimer()
 
     # def pauseTimer(self):
 
 
     def calculatePercentage(self):
-        return (self.currentTime - self.startTime) / self.duration
+        currentTime = pygame.time.get_ticks()
+        return (currentTime - self.startTime) / self.duration
