@@ -6,6 +6,9 @@ class Timer():
         self.startTime = 0
         self.duration = 0
 
+    def getActive(self):
+        return self.active
+
     def startTimer(self, duration):
         self.active = True
         self.startTime = pygame.time.get_ticks()
@@ -22,9 +25,6 @@ class Timer():
 
             if (currentTime - self.startTime >= self.duration):
                 self.endTimer()
-
-    # def pauseTimer(self):
-
 
     def calculatePercentage(self):
         currentTime = pygame.time.get_ticks()

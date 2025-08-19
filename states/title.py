@@ -22,7 +22,7 @@ class Title(State):
         if (controls["clicked"] == True):
             # if (self.playButton.rect.collidepoint(position)):
                 self.gameScreen.enterState()
-                self.gameScreen.play()
+                # self.gameScreen.play()
             # if (self.rulesButton.rect.collidepoint(position)):
             #     rulesScreen = Rules(self.game)
             #     rulesScreen.enterState()
