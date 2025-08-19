@@ -4,6 +4,8 @@ from engine.board import Board
 from engine.player import Player
 from engine.timer import Timer
 
+from states.rules import Rules
+
 import pygame
 
 class Game(State):
@@ -22,6 +24,7 @@ class Game(State):
         self.silentCount = 0
         self.roundIndex = 0
         self.active = False
+        self.playerAction = False
 
         self.playerList = [Player(1, "Alice"), Player(2, "Bob")]
         self.timer = Timer()
@@ -68,12 +71,18 @@ class Game(State):
             self.exitState()
         if (controls["clicked"] == True):
             # Set player action to true
-            print(self.playerList[self.playerCount].sayHi())
+            # print(self.playerList[self.playerCount].sayHi())
+            self.playerAction = True
 
         if not (self.active):
             self.generateRound(self.roundIndex)
             self.roundIndex += 1
             print("Round " + str(self.roundIndex))
+        elif (self.playerAction == True):
+            print(self.playerList[self.playerCount].sayHi())
+            rules = Rules(self.game)
+            rules.enterState()
+            self.playerAction = False
         elif not (self.timer.getActive()):
             self.timer.startTimer(10)
             self.playerCount += 1
