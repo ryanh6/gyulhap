@@ -3,7 +3,7 @@ from engine.timer import Timer
 
 import pygame
 
-class Round(State):
+class Loading(State):
     def __init__(self, game, roundNumber):
         State.__init__(self, game)
         self.roundNumber = roundNumber
