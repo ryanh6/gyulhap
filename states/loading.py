@@ -13,7 +13,7 @@ class Loading(State):
     def update(self, controls, position):
         self.timer.update()
 
-        if (self.timer.active == False):
+        if not (self.timer.active):
             self.exitState()
 
         self.game.resetKeys()
