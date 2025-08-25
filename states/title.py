@@ -1,7 +1,7 @@
 from states.state import State
 from states.game import Game
-from states.menu import Menu
-from states.rules import Rules
+# from states.menu import Menu
+# from states.rules import Rules
 from engine.button import Button
 
 class Title(State):
