@@ -6,7 +6,7 @@ from engine.timer import Timer
 
 import pygame
 
-class Game(State):
+class Gaming(State):
     def __init__(self, game):
         State.__init__(self, game)
 

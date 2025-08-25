@@ -1,7 +1,6 @@
 import time
 import pygame
 from states.title import Title
-from states.game import Game
 
 class GyulHap:
     def __init__(self):

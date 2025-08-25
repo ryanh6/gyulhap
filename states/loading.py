@@ -21,8 +21,7 @@ class Loading(State):
     def draw(self, display, position):
         display.fill((220, 30, 40))
 
-        wideness = self.timer.calculatePercentage()
-        currentSize = display.get_width()
-        pygame.draw.rect(display, (170, 30, 40), pygame.Rect(0, display.get_height() - 10, currentSize * wideness, 10))
+        loadingBarWidth = self.timer.calculatePercentage() * display.get_width()
+        pygame.draw.rect(display, (170, 30, 40), pygame.Rect(0, display.get_height() - 10, loadingBarWidth, 10))
 
 

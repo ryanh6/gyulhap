@@ -1,5 +1,5 @@
 from states.state import State
-from states.game import Game
+from states.gaming import Gaming
 # from states.menu import Menu
 # from states.rules import Rules
 from engine.button import Button
@@ -7,7 +7,7 @@ from engine.button import Button
 class Title(State):
     def __init__(self, game):
         State.__init__(self, game)
-        self.gameScreen = Game(self.game)
+        self.gameScreen = Gaming(self.game)
 
         # self.playButton = Button()
         # self.rulesButton = Button()
