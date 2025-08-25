@@ -19,15 +19,6 @@ class Timer():
         self.startTime = 0
         self.duration = 0
 
-    # def resumeTimer(self):
-    #     self.active = True
-
-    # def pauseTimer(self):
-    #     currentTime = time.time()
-    #     self.active = False
-    #     self.duration = self.duration - (currentTime - self.startTime)
-    #     self.startTime = currentTime
-
     def update(self):
         if (self.active):
             currentTime = time.time()
