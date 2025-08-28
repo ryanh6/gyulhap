@@ -9,9 +9,15 @@ import pygame
 class Gaming(State):
     def __init__(self, game):
         State.__init__(self, game)
+        self.timer = Timer()
+        # self.board = Board()
+        self.timer.startTimer(10)
 
     def update(self, display, position):
+        self.timer.update()
+
         self.game.resetKeys()
 
     def draw(self, display, position):
         display.fill((255, 255, 255))
+        self.board.draw(display)
