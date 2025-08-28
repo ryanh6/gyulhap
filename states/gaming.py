@@ -1,4 +1,5 @@
 from states.state import State
+# from states.score import Score
 from engine.board import Board
 from engine.player import Player
 from engine.timer import Timer
@@ -18,7 +19,9 @@ class Gaming(State):
         self.timer.update()
 
         if not (self.timer.active):
+            # self.scoreScreen = Score(self.game, self.engine, 1)
             self.exitState()
+            # self.scoreScreen.enterState()
 
         self.game.resetKeys()
 
