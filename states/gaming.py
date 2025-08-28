@@ -1,5 +1,4 @@
 from states.state import State
-from states.loading import Loading
 from engine.board import Board
 from engine.player import Player
 from engine.timer import Timer
@@ -7,17 +6,25 @@ from engine.timer import Timer
 import pygame
 
 class Gaming(State):
-    def __init__(self, game):
+    def __init__(self, game, gameEngine):
         State.__init__(self, game)
         self.timer = Timer()
-        # self.board = Board()
+        self.engine = gameEngine
         self.timer.startTimer(10)
+
+        self.engine.makeBoard()
 
     def update(self, display, position):
         self.timer.update()
+
+        if not (self.timer.active):
+            self.exitState()
 
         self.game.resetKeys()
 
     def draw(self, display, position):
         display.fill((255, 255, 255))
-        self.board.draw(display)
+        self.engine.board.draw(display)
+
+        loadingBarWidth = self.timer.calculatePercentage() * display.get_width()
+        pygame.draw.rect(display, (170, 30, 40), pygame.Rect(0, display.get_height() - 10, loadingBarWidth, 10))

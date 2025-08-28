@@ -3,11 +3,12 @@ from states.gaming import Gaming
 # from states.menu import Menu
 # from states.rules import Rules
 from engine.button import Button
+from states.loading import Loading
 
 class Title(State):
-    def __init__(self, game):
+    def __init__(self, game, gameEngine):
         State.__init__(self, game)
-        self.gameScreen = Gaming(self.game)
+        self.engine = gameEngine
 
         # self.playButton = Button()
         # self.rulesButton = Button()
@@ -21,7 +22,10 @@ class Title(State):
 
         if (controls["clicked"] == True):
             # if (self.playButton.rect.collidepoint(position)):
-                self.gameScreen.enterState()
+                # self.gameScreen = Gaming(self.game, self.engine)
+                # self.gameScreen.enterState()
+                self.loadScreen = Loading(self.game, self.engine, 1)
+                self.loadScreen.enterState()
                 # self.gameScreen.play()
             # if (self.rulesButton.rect.collidepoint(position)):
             #     rulesScreen = Rules(self.game)

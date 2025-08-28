@@ -12,10 +12,14 @@ class Game():
         self.answerTimer = 5
         self.gyulTimer = 5
         self.silentRounds = 3
+        self.board = None
         
         self.playerList = [Player(1, "Alice"), Player(2, "Bob")]
         self.colours = [(255, 0, 0), (0, 0, 255), (255, 255, 0)]
         self.backgroundColours = [(255, 255, 255), (0, 0, 0), (100, 100, 100)]
 
     def makeBoard(self):
-        return Board(self.length, self.width, self.attributes, self.colours, self.backgroundColours)
+        self.board = Board(self.length, self.width, self.attributes, self.colours, self.backgroundColours)
+    
+    def getBoard(self):
+        return self.board
