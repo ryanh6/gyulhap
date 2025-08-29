@@ -1,5 +1,4 @@
 from states.state import State
-# from states.score import Score
 from engine.board import Board
 from engine.player import Player
 from engine.timer import Timer
