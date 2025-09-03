@@ -10,10 +10,10 @@ class Title(State):
         State.__init__(self, game)
         self.engine = gameEngine
 
-        # self.playButton = Button()
+        self.playButton = Button("./assets/blank.png")
         # self.rulesButton = Button()
         # self.settingsButton = Button()
-        # self.exitButton = Button()
+        self.exitButton = Button("./assets/blank.png")
 
     def update(self, controls, position):
         if (controls["escape"] == True):
@@ -21,7 +21,7 @@ class Title(State):
             self.game.running = False
 
         if (controls["clicked"] == True):
-            # if (self.playButton.rect.collidepoint(position)):
+            if (self.playButton.rect.collidepoint(position)):
                 # self.gameScreen = Gaming(self.game, self.engine)
                 # self.gameScreen.enterState()
                 self.loadScreen = Loading(self.game, self.engine, 1)
@@ -33,17 +33,17 @@ class Title(State):
             # if (self.settingsButton.rect.collidepoint(position)):
             #     menuScreen = Menu(self.game, self.gameScreen)
             #     menuScreen.enterState()
-            # if (self.exitButton.rect.collidepoint(position)):
-            #     self.game.playing = False
-            #     self.game.running = False
+            if (self.exitButton.rect.collidepoint(position)):
+                self.game.playing = False
+                self.game.running = False
 
         self.game.resetKeys()
 
     def draw(self, display, position):
         display.fill((0, 255, 255))
 
-        # self.playButton.draw(display, position)
+        self.playButton.draw(display, 0, 0, position)
         # self.rulesButton.draw(display, position)
         # self.settingsButton.draw(display, position)
-        # self.exitButton.draw(display, position)
+        self.exitButton.draw(display, 100, 100, position)
         
