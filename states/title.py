@@ -54,7 +54,7 @@ class Title(State):
         display.blit(self.background, (0, 0))
 
         transparent_surface = pygame.Surface((1000, 500), pygame.SRCALPHA)
-        transparent_surface.fill((255, 255, 255, 200))
+        transparent_surface.fill((240, 240, 200, 200))
         display.blit(transparent_surface, (0, 0))
 
         # pygame.display.flip()
