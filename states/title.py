@@ -1,8 +1,8 @@
 from states.state import State
-from states.gaming import Gaming
+# from states.gaming import Gaming
 # from states.menu import Menu
 # from states.rules import Rules
-from engine.button import Button
+# from engine.button import Button
 from states.loading import Loading
 
 import pygame
@@ -14,11 +14,6 @@ class Title(State):
 
         self.logo = pygame.image.load("./assets/logo.png").convert_alpha()
         self.background = pygame.image.load("./assets/background.png").convert_alpha()
-
-        self.playButton = Button("./assets/blank.png")
-        # self.rulesButton = Button()
-        # self.settingsButton = Button()
-        self.exitButton = Button("./assets/blank.png")
 
     def update(self, controls, position):
         if (controls["escape"] == True):

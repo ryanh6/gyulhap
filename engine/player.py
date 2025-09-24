@@ -10,8 +10,5 @@ class Player():
     def getName(self):
         return f"{self.name}"
 
-    def sayHi(self):
-        return f"{self.name} says Hi!"
-
     def addPoints(self, points):
         self.points += points
