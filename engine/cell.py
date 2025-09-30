@@ -21,7 +21,7 @@ class Cell():
         # self.cellButton = Button("./assets/blank.png")
         # self.cellButton.image.set_colorkey((255, 255, 255))
 
-        self.shapes = [self.circle, self.square, self.triangle]
+        # self.shapes = [self.circle, self.square, self.triangle]
 
     def __eq__(self, other):
         if (self.attributes == other.attributes):
