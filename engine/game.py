@@ -9,7 +9,7 @@ class Game():
         self.attributes = 3
         self.rounds = 10
         self.turnTimer = 10
-        self.answerTimer = 5
+        self.answerTimer = 4
         self.gyulTimer = 5
         self.silentRounds = 3
         self.board = None
