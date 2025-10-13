@@ -1,5 +1,6 @@
 import random
-from engine.cell import Cell
+# from engine.cell import Cell
+from cell import Cell
 
 class Board():
     def __init__(self, length, width, attributeNum, colours, backgroundColours):

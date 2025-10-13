@@ -1,5 +1,8 @@
-from engine.player import Player
-from engine.board import Board
+# from engine.player import Player
+# from engine.board import Board
+
+from player import Player
+from board import Board
 
 class Game():
     def __init__(self):
@@ -9,7 +12,7 @@ class Game():
         self.attributes = 3
         self.rounds = 10
         self.turnTimer = 10
-        self.answerTimer = 4
+        self.answerTimer = 5
         self.gyulTimer = 5
         self.silentRounds = 3
         self.board = None
@@ -76,3 +79,12 @@ class Game():
     
     def setSilentRounds(self, newSilentRounds):
         self.silentRounds = newSilentRounds
+
+def main():
+    newGame = Game()
+    newGame.makeBoard()
+
+    print(newGame.getBoard())
+
+if __name__ == "__main__":
+    main()
