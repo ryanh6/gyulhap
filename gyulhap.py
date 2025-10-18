@@ -1,7 +1,7 @@
 import time
 import pygame
-from states.title import Title
-from engine.game import Game
+# from states.title import Title
+from game import Game
 
 class GyulHap:
     def __init__(self):
@@ -96,7 +96,7 @@ class GyulHap:
         pygame.display.flip()
 
     def loadStates(self):
-        self.titleScreen = Title(self, self.engine)
+        # self.titleScreen = Title(self, self.engine)
         self.stateStack.append(self.titleScreen)
 
     def resetKeys(self):
