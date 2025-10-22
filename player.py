@@ -12,3 +12,12 @@ class Player():
 
     def addPoints(self, points):
         self.points += points
+
+    def getPoints(self):
+        return self.points
+
+    def setPoints(self, newPoints):
+        self.points = newPoints
+
+    def resetPoints(self):
+        self.setPoints(0)

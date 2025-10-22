@@ -21,6 +21,21 @@ class Game():
         self.colours = [(255, 0, 0), (0, 0, 255), (255, 255, 0)]
         self.backgroundColours = [(255, 255, 255), (0, 0, 0), (100, 100, 100)]
 
+    def startGame(self):
+        for player in self.playerList:
+            player.resetPoints()
+
+        for i in range(self.rounds):
+            print("Round " + str(i + 1))
+            self.makeBoard()
+            print(self.board)
+
+            for player in self.playerList:
+                print("It is now " + player.getName() + " turn to play!")
+                print("Select 1 for Hap")
+                print("Select 2 for Gyul")
+                move = input("Type your option: ")
+
     def makeBoard(self):
         self.board = Board(self.length, self.width, self.attributes, self.colours, self.backgroundColours)
     
@@ -82,9 +97,7 @@ class Game():
 
 def main():
     newGame = Game()
-    newGame.makeBoard()
-
-    print(newGame.getBoard())
+    newGame.startGame()
 
 if __name__ == "__main__":
     main()
